@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(ls -la \"C:\\\\Users\\\\jquin\\\\Documents\\\\atlantissincro\\\\public\"\" 2>&1 || echo \"public directory does not exist \")",
+      "Bash(grep:*)",
+      "Bash(npx next build:*)",
+      "WebSearch",
+      "Bash(npm run build:*)",
+      "Bash(taskkill:*)"
+    ]
+  }
+}

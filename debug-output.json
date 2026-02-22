@@ -1,0 +1,8 @@
+{
+  "user": {
+    "id": "e0ca8202-c3d7-42f8-a759-7c956230455f",
+    "email": "josesmithdev@gmail.com"
+  },
+  "profile": null,
+  "profileError": "infinite recursion detected in policy for relation \"profiles\""
+}
