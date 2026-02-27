@@ -100,7 +100,7 @@ export default function Hero() {
             href="/reservas"
             className="group inline-flex items-center gap-2 bg-atlantis-red hover:bg-atlantis-red-dark text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-atlantis-red/25 hover:shadow-xl hover:shadow-atlantis-red/30 transition-all duration-300 hover:-translate-y-0.5"
           >
-            Prueba Gratis
+            Día de Prueba
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Link>
           <Link

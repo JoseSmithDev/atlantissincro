@@ -1,4 +1,4 @@
-import { Trophy, Calendar } from 'lucide-react';
+import { Trophy, Calendar, Medal } from 'lucide-react';
 import type { Competition } from '@/lib/types';
 
 function daysUntil(dateStr: string): number {
@@ -6,6 +6,34 @@ function daysUntil(dateStr: string): number {
   const now = new Date();
   now.setHours(0, 0, 0, 0);
   return Math.ceil((target.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+}
+
+// Helper para generar palmarés de muestra consistente según el ID de la competición
+function getSampleMedals(id: string) {
+  const charSum = id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const allCategories = ['Alevín', 'Infantil', 'Junior', 'Absoluto', 'Máster'];
+  const catCount = (charSum % 2) + 2; // 2 o 3 categorías
+  const startIndex = charSum % 4;
+
+  const results = [];
+  for (let i = 0; i < catCount; i++) {
+    const cat = allCategories[(startIndex + i) % allCategories.length];
+    const gold = (charSum + i) % 3;
+    const silver = (charSum + i * 2) % 4;
+    const bronze = (charSum + i * 3) % 3;
+
+    // Solo añadimos si hay alguna medalla
+    if (gold > 0 || silver > 0 || bronze > 0) {
+      results.push({ category: cat, gold, silver, bronze });
+    }
+  }
+
+  // Si casualmente no tiene medallas, le forzamos una
+  if (results.length === 0) {
+    results.push({ category: 'Absoluto', gold: 1, silver: 1, bronze: 0 });
+  }
+
+  return results;
 }
 
 export default function CompetitionsList({ competitions }: { competitions: Competition[] }) {
@@ -92,29 +120,69 @@ export default function CompetitionsList({ competitions }: { competitions: Compe
             <Calendar className="h-6 w-6 text-atlantis-gray" />
             Competiciones Pasadas
           </h2>
-          <div className="space-y-3">
-            {past.map((comp) => (
-              <div
-                key={comp.id}
-                className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm opacity-70 hover:opacity-100 transition-opacity duration-300"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <h3 className="font-bold text-atlantis-black">{comp.name}</h3>
-                    <time className="text-sm text-atlantis-gray">
-                      {new Date(comp.date! + 'T00:00:00').toLocaleDateString('es-ES', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                      })}
-                    </time>
+          <div className="space-y-4">
+            {past.map((comp) => {
+              const medals = getSampleMedals(comp.id);
+
+              return (
+                <div
+                  key={comp.id}
+                  className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                    <div>
+                      <h3 className="font-bold text-atlantis-black text-lg">{comp.name}</h3>
+                      <time className="text-sm text-atlantis-gray">
+                        {new Date(comp.date! + 'T00:00:00').toLocaleDateString('es-ES', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric',
+                        })}
+                      </time>
+                    </div>
+                    <span className="text-xs font-semibold text-atlantis-gray bg-gray-100 px-3 py-1 rounded-full self-start sm:self-auto">
+                      Finalizada
+                    </span>
                   </div>
-                  <span className="text-xs font-semibold text-atlantis-gray bg-gray-100 px-3 py-1 rounded-full">
-                    Finalizada
-                  </span>
+
+                  {/* Palmarés Section */}
+                  <div className="bg-gray-50 rounded-xl p-4 border border-gray-100/50">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Medal className="h-4 w-4 text-atlantis-red" />
+                      <h4 className="text-sm font-bold text-atlantis-black uppercase tracking-wider">Palmarés Destacado</h4>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                      {medals.map((m, idx) => (
+                        <div key={idx} className="bg-white border border-gray-100 rounded-lg p-3 flex flex-col gap-2 shadow-sm">
+                          <span className="text-xs font-bold text-atlantis-gray tracking-wide">{m.category}</span>
+                          <div className="flex items-center gap-4">
+                            {m.gold > 0 && (
+                              <div className="flex items-center gap-1 cursor-default group" title={`${m.gold} Oros`}>
+                                <Medal className="w-5 h-5 text-yellow-600 group-hover:scale-110 transition-transform drop-shadow-[0_2px_2px_rgba(202,138,4,0.4)]" fill="#FBBF24" strokeWidth={1.5} />
+                                <span className="text-sm font-black text-gray-700">x{m.gold}</span>
+                              </div>
+                            )}
+                            {m.silver > 0 && (
+                              <div className="flex items-center gap-1 cursor-default group" title={`${m.silver} Platas`}>
+                                <Medal className="w-5 h-5 text-gray-500 group-hover:scale-110 transition-transform drop-shadow-[0_2px_2px_rgba(156,163,175,0.4)]" fill="#E5E7EB" strokeWidth={1.5} />
+                                <span className="text-sm font-black text-gray-700">x{m.silver}</span>
+                              </div>
+                            )}
+                            {m.bronze > 0 && (
+                              <div className="flex items-center gap-1 cursor-default group" title={`${m.bronze} Bronces`}>
+                                <Medal className="w-5 h-5 text-amber-800 group-hover:scale-110 transition-transform drop-shadow-[0_2px_2px_rgba(180,83,9,0.4)]" fill="#D97706" strokeWidth={1.5} />
+                                <span className="text-sm font-black text-gray-700">x{m.bronze}</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}

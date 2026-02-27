@@ -89,7 +89,7 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-atlantis-red transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link href="/reservas" className="font-medium hover:text-atlantis-red transition-colors duration-300 relative group">
-              Prueba Gratis
+              Día de Prueba
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-atlantis-red transition-all duration-300 group-hover:w-full"></span>
             </Link>
             {user && (
@@ -147,7 +147,7 @@ export default function Navbar() {
               Competiciones
             </Link>
             <Link href="/reservas" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">
-              Prueba Gratis
+              Día de Prueba
             </Link>
             {user && (
               <Link href="/area-padres" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">

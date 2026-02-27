@@ -61,7 +61,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/reservas" className="hover:text-atlantis-red-light transition-colors duration-300 inline-flex items-center gap-1.5">
-                  Prueba Gratis
+                  Día de Prueba
                 </Link>
               </li>
             </ul>
