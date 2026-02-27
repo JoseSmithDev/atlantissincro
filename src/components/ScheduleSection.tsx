@@ -54,10 +54,11 @@ export default function ScheduleSection() {
   const currentCategory = categoriesData.find(c => c.id === activeCategory) || categoriesData[0];
 
   return (
-    <section id="horarios" className="relative py-24 bg-atlantis-blue text-white overflow-hidden">
-      {/* Wave top transition */}
-      <div className="absolute top-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+    <section id="horarios" className="relative pt-28 pb-28 md:pt-32 md:pb-32 bg-atlantis-blue text-white overflow-hidden">
+      {/* Wave top — altura fija para evitar gaps sub-pixel entre secciones */}
+      <div className="absolute top-0 left-0 right-0 h-16 md:h-20 overflow-hidden" style={{ transform: 'translateY(-1px)' }}>
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
+          {/* Rellena blanco (=bg de Competitions) para que se funda sin costura */}
           <path d="M0 0H1440V40C1344 60 1248 20 1152 30C1056 40 960 60 864 50C768 40 672 20 576 30C480 40 384 60 288 50C192 40 96 20 48 30L0 40V0Z" fill="white" />
         </svg>
       </div>
@@ -175,9 +176,9 @@ export default function ScheduleSection() {
         </div>
       </div>
 
-      {/* Wave bottom transition */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+      {/* Wave bottom — altura fija + translateY para eliminar gap con NewsSection */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 md:h-20 overflow-hidden" style={{ transform: 'translateY(1px)' }}>
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
           <path d="M0 40L48 35C96 30 192 20 288 25C384 30 480 50 576 55C672 60 768 50 864 40C960 30 1056 20 1152 25C1248 30 1344 50 1392 60L1440 65V80H0V40Z" fill="white" />
         </svg>
       </div>

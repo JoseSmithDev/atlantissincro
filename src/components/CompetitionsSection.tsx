@@ -23,13 +23,7 @@ export default async function CompetitionsSection() {
   }
 
   return (
-    <section className="relative py-24 bg-atlantis-surface overflow-hidden">
-      {/* Wave top */}
-      <div className="absolute top-0 left-0 right-0">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
-          <path d="M0 0H1440V30C1344 10 1248 50 1152 40C1056 30 960 10 864 20C768 30 672 50 576 40C480 30 384 10 288 20C192 30 96 50 48 40L0 30V0Z" fill="white" />
-        </svg>
-      </div>
+    <section className="relative py-24 bg-white overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
