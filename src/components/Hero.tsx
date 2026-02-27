@@ -97,14 +97,14 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
           <Link
-            href="/reservas"
+            href="/contacto"
             className="group inline-flex items-center gap-2 bg-atlantis-red hover:bg-atlantis-red-dark text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-atlantis-red/25 hover:shadow-xl hover:shadow-atlantis-red/30 transition-all duration-300 hover:-translate-y-0.5"
           >
-            Día de Prueba
+            Contacto
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
-            href="#valores"
+            href="/club"
             className="inline-flex items-center gap-2 border-2 border-white/20 text-white/90 hover:border-white/40 hover:text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 backdrop-blur-sm"
           >
             Descubre más
