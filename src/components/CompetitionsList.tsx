@@ -8,31 +8,36 @@ function daysUntil(dateStr: string): number {
   return Math.ceil((target.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 }
 
-// Helper para generar palmarés de muestra consistente según el ID de la competición
-function getSampleMedals(id: string) {
+type MedalResult = {
+  name: string;
+  category: string;
+  modality: string;
+  medal: 'gold' | 'silver' | 'bronze';
+};
+
+const SAMPLE_RESULTS: MedalResult[] = [
+  { name: 'Lucía Martínez',              category: 'Infantil',  modality: 'Solo',   medal: 'gold'   },
+  { name: 'Sara Gómez',                  category: 'Alevín',    modality: 'Solo',   medal: 'gold'   },
+  { name: 'Martínez / Pérez',            category: 'Infantil',  modality: 'Dúo',    medal: 'gold'   },
+  { name: 'Equipo Infantil Atlantis',    category: 'Infantil',  modality: 'Equipo', medal: 'gold'   },
+  { name: 'Valeria Ruiz',               category: 'Junior',    modality: 'Solo',   medal: 'silver' },
+  { name: 'Gómez / Torres',             category: 'Alevín',    modality: 'Dúo',    medal: 'silver' },
+  { name: 'Equipo Junior Atlantis',      category: 'Junior',    modality: 'Equipo', medal: 'silver' },
+  { name: 'Carmen López',               category: 'Absoluto',  modality: 'Solo',   medal: 'silver' },
+  { name: 'Alba Fernández',             category: 'Alevín',    modality: 'Solo',   medal: 'bronze' },
+  { name: 'Ruiz / Sánchez',            category: 'Junior',    modality: 'Dúo',    medal: 'bronze' },
+  { name: 'Equipo Absoluto Atlantis',    category: 'Absoluto',  modality: 'Equipo', medal: 'bronze' },
+  { name: 'Equipo Máster Atlantis',      category: 'Máster',    modality: 'Equipo', medal: 'bronze' },
+];
+
+function getSampleResults(id: string): MedalResult[] {
   const charSum = id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const allCategories = ['Alevín', 'Infantil', 'Junior', 'Absoluto', 'Máster'];
-  const catCount = (charSum % 2) + 2; // 2 o 3 categorías
-  const startIndex = charSum % 4;
-
-  const results = [];
-  for (let i = 0; i < catCount; i++) {
-    const cat = allCategories[(startIndex + i) % allCategories.length];
-    const gold = (charSum + i) % 3;
-    const silver = (charSum + i * 2) % 4;
-    const bronze = (charSum + i * 3) % 3;
-
-    // Solo añadimos si hay alguna medalla
-    if (gold > 0 || silver > 0 || bronze > 0) {
-      results.push({ category: cat, gold, silver, bronze });
-    }
+  const count = (charSum % 4) + 3; // entre 3 y 6 resultados
+  const offset = charSum % SAMPLE_RESULTS.length;
+  const results: MedalResult[] = [];
+  for (let i = 0; i < count; i++) {
+    results.push(SAMPLE_RESULTS[(offset + i) % SAMPLE_RESULTS.length]);
   }
-
-  // Si casualmente no tiene medallas, le forzamos una
-  if (results.length === 0) {
-    results.push({ category: 'Absoluto', gold: 1, silver: 1, bronze: 0 });
-  }
-
   return results;
 }
 
@@ -122,7 +127,12 @@ export default function CompetitionsList({ competitions }: { competitions: Compe
           </h2>
           <div className="space-y-4">
             {past.map((comp) => {
-              const medals = getSampleMedals(comp.id);
+              const results = getSampleResults(comp.id);
+              const medalStyle = {
+                gold:   { icon: 'text-yellow-500', bg: 'bg-yellow-50 border-yellow-100',  fill: '#FBBF24', label: 'Oro'    },
+                silver: { icon: 'text-gray-400',   bg: 'bg-gray-50   border-gray-100',    fill: '#D1D5DB', label: 'Plata'  },
+                bronze: { icon: 'text-amber-700',  bg: 'bg-amber-50  border-amber-100',   fill: '#D97706', label: 'Bronce' },
+              };
 
               return (
                 <div
@@ -145,39 +155,26 @@ export default function CompetitionsList({ competitions }: { competitions: Compe
                     </span>
                   </div>
 
-                  {/* Palmarés Section */}
+                  {/* Palmarés */}
                   <div className="bg-gray-50 rounded-xl p-4 border border-gray-100/50">
                     <div className="flex items-center gap-2 mb-3">
                       <Medal className="h-4 w-4 text-atlantis-red" />
                       <h4 className="text-sm font-bold text-atlantis-black uppercase tracking-wider">Palmarés Destacado</h4>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                      {medals.map((m, idx) => (
-                        <div key={idx} className="bg-white border border-gray-100 rounded-lg p-3 flex flex-col gap-2 shadow-sm">
-                          <span className="text-xs font-bold text-atlantis-gray tracking-wide">{m.category}</span>
-                          <div className="flex items-center gap-4">
-                            {m.gold > 0 && (
-                              <div className="flex items-center gap-1 cursor-default group" title={`${m.gold} Oros`}>
-                                <Medal className="w-5 h-5 text-yellow-600 group-hover:scale-110 transition-transform drop-shadow-[0_2px_2px_rgba(202,138,4,0.4)]" fill="#FBBF24" strokeWidth={1.5} />
-                                <span className="text-sm font-black text-gray-700">x{m.gold}</span>
-                              </div>
-                            )}
-                            {m.silver > 0 && (
-                              <div className="flex items-center gap-1 cursor-default group" title={`${m.silver} Platas`}>
-                                <Medal className="w-5 h-5 text-gray-500 group-hover:scale-110 transition-transform drop-shadow-[0_2px_2px_rgba(156,163,175,0.4)]" fill="#E5E7EB" strokeWidth={1.5} />
-                                <span className="text-sm font-black text-gray-700">x{m.silver}</span>
-                              </div>
-                            )}
-                            {m.bronze > 0 && (
-                              <div className="flex items-center gap-1 cursor-default group" title={`${m.bronze} Bronces`}>
-                                <Medal className="w-5 h-5 text-amber-800 group-hover:scale-110 transition-transform drop-shadow-[0_2px_2px_rgba(180,83,9,0.4)]" fill="#D97706" strokeWidth={1.5} />
-                                <span className="text-sm font-black text-gray-700">x{m.bronze}</span>
-                              </div>
-                            )}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {results.map((r, idx) => {
+                        const s = medalStyle[r.medal];
+                        return (
+                          <div key={idx} className={`flex items-center gap-3 rounded-lg px-3 py-2 border ${s.bg}`}>
+                            <Medal className={`w-5 h-5 flex-shrink-0 ${s.icon}`} fill={s.fill} strokeWidth={1.5} />
+                            <div className="min-w-0">
+                              <p className="text-sm font-bold text-atlantis-black truncate">{r.name}</p>
+                              <p className="text-xs text-atlantis-gray">{r.category} · {r.modality}</p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

@@ -9,7 +9,10 @@
       "WebSearch",
       "Bash(npm run build:*)",
       "Bash(taskkill:*)",
-      "Bash(cmd:*)"
+      "Bash(cmd:*)",
+      "WebFetch(domain:atlantissincro.com)",
+      "WebFetch(domain:www.axesor.es)",
+      "WebFetch(domain:sede.valencia.es)"
     ]
   }
 }

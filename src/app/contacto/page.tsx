@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   description:
     'Contacta con el Club Natación Artística Atlantis. Resuelve tus dudas sobre categorías, horarios e inscripciones.',
   alternates: {
-    canonical: '/reservas',
+    canonical: '/contacto',
   },
 };
 
-export default function ReservasPage() {
+export default function ContactoPage() {
   return (
     <>
       <PageHero

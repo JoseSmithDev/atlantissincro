@@ -29,15 +29,15 @@ export default function TeamPhotoSection() {
         />
       </motion.div>
 
-      {/* ── Fade blanco en el top — sella el hueco con la wave del Hero ── */}
-      <div className="absolute top-0 inset-x-0 h-20 md:h-28 bg-gradient-to-b from-white to-transparent z-10" />
+      {/* ── Fade desde el azul oscuro del Hero ── */}
+      <div className="absolute top-0 inset-x-0 h-32 md:h-48 bg-gradient-to-b from-[#001a33] to-transparent z-10" />
 
-      {/* ── Overlay degradado (transparente arriba para no tapar el fade blanco) ── */}
+      {/* ── Overlay degradado ── */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(to bottom, transparent 10%, rgba(0,0,0,0.22) 35%, rgba(0,0,0,0.22) 65%, rgba(139,0,0,0.55) 100%)',
+            'linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.22) 55%, rgba(0,0,0,0.22) 70%, rgba(139,0,0,0.55) 100%)',
         }}
       />
 

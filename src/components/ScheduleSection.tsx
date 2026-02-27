@@ -1,57 +1,25 @@
-"use client";
+import Link from 'next/link';
+import { Clock, Calendar, MapPin, Users, MessageCircle, ArrowRight } from 'lucide-react';
 
-import { useState } from 'react';
-import { Clock, Calendar, MapPin, Users } from 'lucide-react';
+const iniciacionData = {
+  id: 'iniciacion',
+  name: 'Escuela / Iniciación',
+  ageGroup: '6 a 12 años aprox.',
+  schedule: [
+    { day: 'Lunes', time: '17:30 - 19:00', groups: 'Nivel 1 y 2' },
+    { day: 'Miércoles', time: '17:30 - 19:00', groups: 'Nivel 1 y 2' },
+    { day: 'Viernes', time: '17:30 - 19:00', groups: 'Todos los niveles' },
+  ]
+};
 
-const categoriesData = [
-  {
-    id: 'iniciacion',
-    name: 'Escuela / Iniciación',
-    ageGroup: '6 a 12 años aprox.',
-    schedule: [
-      { day: 'Lunes', time: '17:30 - 19:00', groups: 'Nivel 1 y 2' },
-      { day: 'Miércoles', time: '17:30 - 19:00', groups: 'Nivel 1 y 2' },
-      { day: 'Viernes', time: '17:30 - 19:00', groups: 'Todos los niveles' },
-    ]
-  },
-  {
-    id: 'base',
-    name: 'Alevín e Infantil',
-    ageGroup: '10 a 15 años aprox.',
-    schedule: [
-      { day: 'Martes', time: '17:30 - 20:00', groups: 'Competición Base' },
-      { day: 'Jueves', time: '17:30 - 20:00', groups: 'Competición Base' },
-      { day: 'Viernes', time: '17:30 - 19:30', groups: 'Competición Base' },
-      { day: 'Sábado', time: '10:00 - 13:00', groups: 'Rendimiento' },
-    ]
-  },
-  {
-    id: 'absoluto',
-    name: 'Junior y Absoluto',
-    ageGroup: '+16 años aprox.',
-    schedule: [
-      { day: 'Lunes', time: '19:00 - 21:00', groups: 'Alto Rendimiento' },
-      { day: 'Miércoles', time: '19:00 - 21:00', groups: 'Alto Rendimiento' },
-      { day: 'Viernes', time: '19:00 - 21:00', groups: 'Alto Rendimiento' },
-      { day: 'Sábado', time: '10:00 - 13:30', groups: 'Alto Rendimiento' },
-    ]
-  },
-  {
-    id: 'master',
-    name: 'Máster',
-    ageGroup: '+20 años / Adultos',
-    schedule: [
-      { day: 'Martes', time: '20:00 - 21:30', groups: 'Nivel Único' },
-      { day: 'Jueves', time: '20:00 - 21:30', groups: 'Nivel Único' },
-      { day: 'Sábado', time: '12:00 - 14:00', groups: 'Nivel Único' },
-    ]
-  }
+const otherCategories = [
+  { id: 'base', name: 'Alevín e Infantil', ageGroup: '10 a 15 años aprox.' },
+  { id: 'absoluto', name: 'Junior y Absoluto', ageGroup: '+16 años aprox.' },
+  { id: 'master', name: 'Máster', ageGroup: '+20 años / Adultos' },
 ];
 
 export default function ScheduleSection() {
-  const [activeCategory, setActiveCategory] = useState(categoriesData[0].id);
-
-  const currentCategory = categoriesData.find(c => c.id === activeCategory) || categoriesData[0];
+  const currentCategory = iniciacionData;
 
   return (
     <section id="horarios" className="relative pt-28 pb-28 md:pt-32 md:pb-32 bg-atlantis-blue text-white overflow-hidden">
@@ -117,29 +85,13 @@ export default function ScheduleSection() {
                 </div>
               </div>
 
-              {/* Category Selector Tabs */}
-              <div
-                className="bg-black/20 p-2 sm:p-3 overflow-x-auto border-b border-white/10"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-              >
-                <div className="flex items-center gap-2 min-w-max px-2">
-                  {categoriesData.map(cat => (
-                    <button
-                      key={cat.id}
-                      onClick={() => setActiveCategory(cat.id)}
-                      className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 ${activeCategory === cat.id
-                          ? 'bg-atlantis-red text-white shadow-md shadow-atlantis-red/20'
-                          : 'bg-transparent text-white/60 hover:text-white hover:bg-white/10'
-                        }`}
-                    >
-                      <Users className={`h-4 w-4 ${activeCategory === cat.id ? 'opacity-100' : 'opacity-50'}`} />
-                      <span>{cat.name}</span>
-                    </button>
-                  ))}
-                </div>
+              {/* Category label */}
+              <div className="bg-black/20 px-6 sm:px-8 py-3 border-b border-white/10 flex items-center gap-2">
+                <Users className="h-4 w-4 text-white/50" />
+                <span className="text-sm font-bold text-white">{currentCategory.name}</span>
               </div>
 
-              <div className="p-6 md:p-8 min-h-[350px]" key={activeCategory}>
+              <div className="p-6 md:p-8">
                 <div className="inline-flex items-center gap-2 mb-8 bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-sm text-white/80">
                   <div className="h-2 w-2 rounded-full bg-atlantis-red animate-pulse"></div>
                   Edad orientativa: <strong className="text-white">{currentCategory.ageGroup}</strong>
@@ -164,12 +116,26 @@ export default function ScheduleSection() {
                   ))}
                 </div>
 
-                {currentCategory.schedule.length === 0 && (
-                  <div className="text-center py-16 text-white/50 flex flex-col items-center gap-4">
-                    <Calendar className="h-12 w-12 opacity-20" />
-                    <span>No hay horarios definidos para esta categoría aún.</span>
+                {/* Other categories — contact CTA */}
+                <div className="mt-8 pt-8 border-t border-white/10">
+                  <p className="text-white/50 text-sm mb-4 flex items-center gap-2">
+                    <MessageCircle className="h-4 w-4 flex-shrink-0" />
+                    ¿Buscas otra categoría? Contáctanos para más información:
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {otherCategories.map(cat => (
+                      <Link
+                        key={cat.id}
+                        href="/contacto"
+                        className="inline-flex items-center gap-2 bg-white/5 hover:bg-atlantis-red/80 border border-white/10 hover:border-atlantis-red px-4 py-2 rounded-xl text-sm font-bold text-white/70 hover:text-white transition-all duration-300 group"
+                      >
+                        <Users className="h-3.5 w-3.5 opacity-50 group-hover:opacity-100" />
+                        {cat.name}
+                        <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 -ml-1 transition-all duration-300" />
+                      </Link>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
             </div>
           </div>

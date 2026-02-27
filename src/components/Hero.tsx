@@ -123,20 +123,8 @@ export default function Hero() {
         <ChevronDown className="h-7 w-7 text-gray-600 animate-bounce" />
       </motion.div>
 
-      {/* Wave SVG bottom — altura fija + translateY para sellar el gap con la sección siguiente */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 h-20 md:h-28 overflow-hidden" style={{ transform: 'translateY(1px)' }}>
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
-          <path
-            d="M0 80L48 78C96 76 192 72 288 74C384 76 480 84 576 86C672 88 768 84 864 80C960 76 1056 72 1152 74C1248 76 1344 84 1392 88L1440 90V120H0V80Z"
-            fill="white"
-            opacity="0.4"
-          />
-          <path
-            d="M0 60L48 55C96 50 192 40 288 45C384 50 480 70 576 75C672 80 768 70 864 60C960 50 1056 40 1152 45C1248 50 1344 70 1392 80L1440 90V120H0V60Z"
-            fill="white"
-          />
-        </svg>
-      </div>
+      {/* Fade hacia la foto del equipo */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-[#001a33]" />
     </section>
   );
 }

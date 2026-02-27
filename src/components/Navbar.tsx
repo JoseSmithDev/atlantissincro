@@ -73,7 +73,7 @@ export default function Navbar() {
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             <Link href="/" className="font-medium hover:text-atlantis-red transition-colors duration-300 relative group">
-              INICIO
+              Inicio
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-atlantis-red transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link href="/club" className="font-medium hover:text-atlantis-red transition-colors duration-300 relative group">
@@ -88,8 +88,8 @@ export default function Navbar() {
               Competiciones
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-atlantis-red transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <Link href="/reservas" className="font-medium hover:text-atlantis-red transition-colors duration-300 relative group">
-              Día de Prueba
+            <Link href="/contacto" className="font-medium hover:text-atlantis-red transition-colors duration-300 relative group">
+              Contacto
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-atlantis-red transition-all duration-300 group-hover:w-full"></span>
             </Link>
             {user && (
@@ -135,7 +135,7 @@ export default function Navbar() {
         <div className="md:hidden bg-white border-t border-gray-100">
           <div className="px-4 py-4 space-y-3 shadow-inner">
             <Link href="/" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">
-              INICIO
+              Inicio
             </Link>
             <Link href="/club" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">
               El Club
@@ -146,8 +146,8 @@ export default function Navbar() {
             <Link href="/competiciones" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">
               Competiciones
             </Link>
-            <Link href="/reservas" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">
-              Día de Prueba
+            <Link href="/contacto" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">
+              Contacto
             </Link>
             {user && (
               <Link href="/area-padres" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">
