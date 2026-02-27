@@ -69,7 +69,10 @@ const documents: { section: string; icon: React.ElementType; color: string; item
 /* ────────────────────────────────────────────
    Subvenciones
 ──────────────────────────────────────────── */
-const subsidies = [
+type SubsidyEntry = { entity: string; concept: string; amount?: string; href?: string };
+type SubsidyItem = { year: number; entries: SubsidyEntry[] };
+
+const subsidies: SubsidyItem[] = [
   {
     year: 2025,
     entries: [
