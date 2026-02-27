@@ -12,7 +12,8 @@
       "Bash(cmd:*)",
       "WebFetch(domain:atlantissincro.com)",
       "WebFetch(domain:www.axesor.es)",
-      "WebFetch(domain:sede.valencia.es)"
+      "WebFetch(domain:sede.valencia.es)",
+      "Bash(git:*)"
     ]
   }
 }
