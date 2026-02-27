@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type React from 'react';
 import Link from 'next/link';
 import { FileText, Scale, Shield, Euro, Users, ChevronRight, ExternalLink, Building2 } from 'lucide-react';
 
@@ -22,7 +23,9 @@ const board = [
 /* ────────────────────────────────────────────
    Documentos
 ──────────────────────────────────────────── */
-const documents = [
+type DocItem = { label: string; href?: string; note?: string };
+
+const documents: { section: string; icon: React.ElementType; color: string; items: DocItem[] }[] = [
   {
     section: 'Documentación Fundacional',
     icon: FileText,
