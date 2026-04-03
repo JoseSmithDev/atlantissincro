@@ -36,20 +36,6 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mb-8"
-        >
-          <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full border border-white/20 bg-white/5 text-white/80 text-sm font-semibold tracking-widest uppercase backdrop-blur-sm">
-            <svg className="w-4 h-4 text-atlantis-red-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M2 12c2-3 4-5 6-5s4 2 6 5 4 5 6 5 4-2 6-5" />
-            </svg>
-            Temporada 2025 / 2026
-          </span>
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,7 +63,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-xl md:text-2xl text-white/70 mb-4 max-w-3xl mx-auto font-light leading-relaxed"
         >
-          Club de Natación Artística en Valencia, España
+          Club de Natación Artística en Valencia
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

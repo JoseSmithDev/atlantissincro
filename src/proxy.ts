@@ -3,7 +3,7 @@ import { updateSession } from '@/lib/supabase/middleware';
 
 const COOKIE = 'atlantis-access';
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // ── Rutas exentas siempre ──────────────────────────────────────────────────

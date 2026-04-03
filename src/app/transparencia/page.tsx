@@ -353,6 +353,30 @@ export default function TransparenciaPage() {
           </Link>
         </section>
 
+        {/* ── Federaciones y entidades ── */}
+        <section>
+          <p className="text-center text-xs font-bold tracking-[0.3em] text-atlantis-gray uppercase mb-8">
+            Federaciones y Entidades Colaboradoras
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-14">
+            {[
+              { src: '/logos/fncv.png', alt: 'Federació de Natació de la Comunitat Valenciana' },
+              { src: '/logos/comunitat-esport.png', alt: 'Comunitat de l\'Esport' },
+              { src: '/logos/rfen.png', alt: 'Real Federación Española de Natación' },
+              { src: '/logos/diputacio-valencia.png', alt: 'Diputació de València' },
+            ].map((logo) => (
+              <div key={logo.alt} className="flex-shrink-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-16 md:h-20 w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* ── Pie ── */}
         <section className="border-t border-gray-100 pt-10 flex flex-wrap gap-4 text-sm text-atlantis-gray">
           <span>¿Necesitas más información?</span>

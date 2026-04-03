@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X, Waves } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import type { Profile } from '@/lib/types';
 
@@ -14,37 +14,51 @@ export default function Navbar() {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        setUser(user);
-        const { data } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', user.id)
-          .single();
-        if (data) setProfile(data);
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          setUser(user);
+          const { data } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', user.id)
+            .single();
+          if (data) setProfile(data);
+        }
+      } catch {
+        // Supabase no configurado — continuar sin auth
       }
     };
     getUser();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
-        if (session?.user) {
-          setUser(session.user);
-          const { data } = await supabase
-            .from('profiles')
-            .select('*')
-            .eq('id', session.user.id)
-            .single();
-          if (data) setProfile(data);
-        } else {
-          setUser(null);
-          setProfile(null);
+    let subscription: { unsubscribe: () => void } | null = null;
+    try {
+      const { data } = supabase.auth.onAuthStateChange(
+        async (_event, session) => {
+          try {
+            if (session?.user) {
+              setUser(session.user);
+              const { data } = await supabase
+                .from('profiles')
+                .select('*')
+                .eq('id', session.user.id)
+                .single();
+              if (data) setProfile(data);
+            } else {
+              setUser(null);
+              setProfile(null);
+            }
+          } catch {
+            // Ignorar errores de Supabase
+          }
         }
-      }
-    );
+      );
+      subscription = data.subscription;
+    } catch {
+      // Supabase no configurado
+    }
 
-    return () => subscription.unsubscribe();
+    return () => subscription?.unsubscribe();
   }, [supabase]);
 
   const handleLogout = () => {
@@ -60,14 +74,13 @@ export default function Navbar() {
     <nav className="bg-white/95 backdrop-blur-sm text-atlantis-black sticky top-0 z-50 border-b border-gray-100 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="bg-atlantis-red text-white p-2 rounded-lg group-hover:bg-atlantis-red-dark transition-colors duration-300">
-              <Waves className="h-6 w-6" />
-            </div>
-            <div className="flex flex-col leading-tight group-hover:text-atlantis-red transition-colors duration-300">
-              <span className="font-black text-lg tracking-tight">ATLANTIS</span>
-              <span className="text-[10px] font-semibold text-atlantis-red tracking-widest uppercase">Natación Artística</span>
-            </div>
+          <Link href="/" className="flex items-center group">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/atlantis-logo.png"
+              alt="Atlantis Sincro"
+              className="h-12 w-auto transition-opacity duration-300 group-hover:opacity-80"
+            />
           </Link>
 
           {/* Desktop nav */}
