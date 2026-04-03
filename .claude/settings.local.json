@@ -13,7 +13,15 @@
       "WebFetch(domain:atlantissincro.com)",
       "WebFetch(domain:www.axesor.es)",
       "WebFetch(domain:sede.valencia.es)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(rm:*)",
+      "Bash(npx kill-port:*)",
+      "Bash(ls /c/Users/jquin/Documents/atlantissincro/ATLANTIS*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(identify /c/Users/jquin/Documents/atlantissincro/public/atlantis-logo.png)",
+      "Bash(ls -lah /c/Users/jquin/Documents/atlantissincro/*.png /c/Users/jquin/Documents/atlantissincro/*.svg)",
+      "Bash(npm install:*)",
+      "Bash(npx vercel:*)"
     ]
   }
 }
