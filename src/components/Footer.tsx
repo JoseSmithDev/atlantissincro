@@ -55,11 +55,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#noticias" className="hover:text-atlantis-red-light transition-colors duration-300 inline-flex items-center gap-1.5">
-                  Noticias
-                </Link>
-              </li>
-              <li>
                 <Link href="/transparencia" className="hover:text-atlantis-red-light transition-colors duration-300 inline-flex items-center gap-1.5">
                   Transparencia
                 </Link>
@@ -72,7 +67,7 @@ export default function Footer() {
             <h3 className="font-semibold text-lg mb-4">Recursos</h3>
             <ul className="space-y-2.5 text-gray-300 text-sm">
               <li>
-                <Link href="/#horarios" className="hover:text-atlantis-red-light transition-colors duration-300">
+                <Link href="/club#horarios" className="hover:text-atlantis-red-light transition-colors duration-300">
                   Horarios
                 </Link>
               </li>

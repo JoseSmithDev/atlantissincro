@@ -1,6 +1,6 @@
 'use client';
 
-import { Users, Trophy, Heart, Sparkles } from 'lucide-react';
+import { Trophy, Heart, Sparkles } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
@@ -16,12 +16,6 @@ const cards = [
     title: 'Competición',
     text: 'Participamos en campeonatos autonómicos y nacionales con excelentes resultados en todos los niveles.',
     gradient: 'from-amber-500/10 to-orange-500/5',
-  },
-  {
-    icon: Users,
-    title: 'Formación Integral',
-    text: 'Programas desde iniciación (6-11 años), rendimiento y competición. Crecimiento dentro y fuera del agua.',
-    gradient: 'from-blue-500/10 to-cyan-500/5',
   },
 ];
 
@@ -52,9 +46,9 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
 
 const stats = [
   { value: 10, suffix: '+', label: 'Años de experiencia' },
-  { value: 60, suffix: '+', label: 'Nadadoras activas' },
+  { value: 70, suffix: '', label: 'Nadadoras activas' },
   { value: 3, suffix: '', label: 'Sedes en Valencia' },
-  { value: 20, suffix: '+', label: 'Competiciones al año' },
+  { value: 12, suffix: '+', label: 'Competiciones al año' },
 ];
 
 export default function AboutSection() {
@@ -95,7 +89,7 @@ export default function AboutSection() {
         </div>
 
         {/* Value cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-4xl mx-auto">
           {cards.map((card, i) => (
             <motion.div
               key={card.title}

@@ -79,7 +79,7 @@ const subsidies: SubsidyItem[] = [
       {
         entity: 'Ayuntamiento de Valencia',
         concept: 'Subvenciones a entidades deportivas. Temporada 2024-2025',
-        href: 'https://atlantissincro.com/wp-content/uploads/2025/12/edicto-12-12-2025.pdf',
+        href: '/documents/edicto-12-12-2025.pdf',
       },
     ],
   },
@@ -119,21 +119,7 @@ const subsidies: SubsidyItem[] = [
       {
         entity: 'Diputació Provincial de Valencia',
         concept: 'Subvención club de élite 2022 (BOP n.º 216, 10/11/2022)',
-        amount: '15.547,59 €',
         href: 'https://atlantissincro.com/wp-content/uploads/2023/05/b.o.p.-no-216-10-11-2022.pdf',
-      },
-    ],
-  },
-  {
-    year: 2021,
-    entries: [
-      {
-        entity: 'Ayuntamiento de Valencia',
-        concept: 'Convocatoria extraordinaria de ayudas — Servicio de Deportes',
-      },
-      {
-        entity: 'Ayuntamiento de Valencia',
-        concept: 'Plan Resistir — Ayudas Paréntesis',
       },
     ],
   },
@@ -356,7 +342,7 @@ export default function TransparenciaPage() {
         {/* ── Federaciones y entidades ── */}
         <section>
           <p className="text-center text-xs font-bold tracking-[0.3em] text-atlantis-gray uppercase mb-8">
-            Federaciones y Entidades Colaboradoras
+            Entidades Colaboradoras y Patrocinadores
           </p>
           <div className="flex flex-wrap items-center justify-center gap-10 md:gap-14">
             {[
@@ -364,6 +350,9 @@ export default function TransparenciaPage() {
               { src: '/logos/comunitat-esport.png', alt: 'Comunitat de l\'Esport' },
               { src: '/logos/rfen.png', alt: 'Real Federación Española de Natación' },
               { src: '/logos/diputacio-valencia.png', alt: 'Diputació de València' },
+              { src: '/logos/ajuntament-fdm-valencia.jpg', alt: 'Ajuntament de València · Fundación Deportiva Municipal' },
+              { src: '/logos/musicate.png', alt: 'Musícate' },
+              { src: '/logos/que-impresiones.png', alt: 'Qué Impresiones' },
             ].map((logo) => (
               <div key={logo.alt} className="flex-shrink-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -19,6 +19,22 @@ export const metadata: Metadata = {
   },
 };
 
+const FALLBACK_COMPETITIONS: Competition[] = [
+  { id: 'auto-2026-01', name: '2ª Liga de Figuras y Rutinas Técnicas', date: '2026-01-25', slug: '2-liga-figuras-rutinas-tecnicas-2026', cover_url: null, created_at: '2026-01-25T00:00:00Z' },
+  { id: 'prom-2026-02', name: 'VI Open Promoción de Invierno', date: '2026-02-07', slug: 'vi-open-promocion-invierno-2026', cover_url: null, created_at: '2026-02-07T00:00:00Z' },
+  { id: 'nat-2026-03a', name: 'Campeonato de España Alevín-Infantil de Invierno', date: '2026-03-06', slug: 'cto-espana-alevin-infantil-invierno-2026', cover_url: null, created_at: '2026-03-06T00:00:00Z' },
+  { id: 'auto-2026-03', name: 'V Cto. Autonómico de Figuras, Rutinas Técnicas y Combos', date: '2026-03-28', slug: 'v-cto-autonomico-figuras-combos-2026', cover_url: null, created_at: '2026-03-28T00:00:00Z' },
+  { id: 'nat-2026-04', name: 'Campeonato de España Junior-Senior de Invierno', date: '2026-04-10', slug: 'cto-espana-junior-senior-invierno-2026', cover_url: null, created_at: '2026-04-10T00:00:00Z' },
+  { id: 'auto-2026-04', name: '3ª Liga de Figuras y Rutinas Técnicas', date: '2026-04-19', slug: '3-liga-figuras-rutinas-tecnicas-2026', cover_url: null, created_at: '2026-04-19T00:00:00Z' },
+  { id: 'nat-2026-05', name: 'Campeonato de España Infantil de Comunidades Autónomas', date: '2026-05-09', slug: 'cto-espana-infantil-ccaa-2026', cover_url: null, created_at: '2026-05-09T00:00:00Z' },
+  { id: 'auto-2026-05', name: 'Open Senior-Máster de la Comunitat Valenciana', date: '2026-05-16', slug: 'open-senior-master-cv-2026', cover_url: null, created_at: '2026-05-16T00:00:00Z' },
+  { id: 'prom-2026-06', name: 'VI Open Promoción de Verano', date: '2026-06-06', slug: 'vi-open-promocion-verano-2026', cover_url: null, created_at: '2026-06-06T00:00:00Z' },
+  { id: 'auto-2026-06', name: 'V Cto. Autonómico de Figuras y Rutinas de Verano', date: '2026-06-12', slug: 'v-cto-autonomico-verano-2026', cover_url: null, created_at: '2026-06-12T00:00:00Z' },
+  { id: 'nat-2026-06', name: 'Campeonato de España Infantil 1ª División y Absoluto de Verano', date: '2026-06-26', slug: 'cto-espana-infantil-1div-absoluto-verano-2026', cover_url: null, created_at: '2026-06-26T00:00:00Z' },
+  { id: 'nat-2026-07a', name: 'Campeonato de España Alevín Promoción e Infantil 2ª División', date: '2026-07-03', slug: 'cto-espana-alevin-promocion-infantil-2div-2026', cover_url: null, created_at: '2026-07-03T00:00:00Z' },
+  { id: 'nat-2026-07b', name: 'Campeonato de España Alevín 1ª División y Junior de Verano', date: '2026-07-09', slug: 'cto-espana-alevin-1div-junior-verano-2026', cover_url: null, created_at: '2026-07-09T00:00:00Z' },
+];
+
 export default async function CompeticionesPage() {
   const supabase = await createClient();
   const { data } = await supabase
@@ -26,7 +42,7 @@ export default async function CompeticionesPage() {
     .select('*')
     .order('date', { ascending: true });
 
-  const competitions: Competition[] = data || [];
+  const competitions: Competition[] = data && data.length > 0 ? data : FALLBACK_COMPETITIONS;
 
   return (
     <>

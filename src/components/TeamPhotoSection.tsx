@@ -56,10 +56,6 @@ export default function TeamPhotoSection() {
             Un equipo,<br className="hidden sm:block" /> una pasión
           </h2>
           <div className="mt-4 h-px w-16 bg-atlantis-red/70 mx-auto" />
-          <p className="mt-4 text-base md:text-lg text-white/75 max-w-xl font-light">
-            Más de 100 deportistas en Valencia comprometidas con la excelencia
-            y los valores del deporte.
-          </p>
         </motion.div>
       </div>
 

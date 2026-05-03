@@ -21,7 +21,13 @@
       "Bash(identify /c/Users/jquin/Documents/atlantissincro/public/atlantis-logo.png)",
       "Bash(ls -lah /c/Users/jquin/Documents/atlantissincro/*.png /c/Users/jquin/Documents/atlantissincro/*.svg)",
       "Bash(npm install:*)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "Bash(vercel login:*)",
+      "Bash(vercel:*)",
+      "Bash(cp \"/c/Users/jquin/Downloads/Logo._Musícate.png\" \"/c/Users/jquin/Documents/atlantissincro/public/logos/musicate.png\")",
+      "Bash(cp \"/c/Users/jquin/Downloads/Logo._Que Impresiones png.png\" \"/c/Users/jquin/Documents/atlantissincro/public/logos/que-impresiones.png\")",
+      "Bash(cp \"/c/Users/jquin/Downloads/Logos Ayto fdm Valencia.jpg\" \"/c/Users/jquin/Documents/atlantissincro/public/logos/ajuntament-fdm-valencia.jpg\")",
+      "Bash(cp \"/c/Users/jquin/Downloads/Edicto \\(12-12-2025\\).pdf\" \"/c/Users/jquin/Documents/atlantissincro/public/documents/edicto-12-12-2025.pdf\")"
     ]
   }
 }

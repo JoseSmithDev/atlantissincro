@@ -93,10 +93,6 @@ export default function Navbar() {
               El Club
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-atlantis-red transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <Link href="/#noticias" className="font-medium hover:text-atlantis-red transition-colors duration-300 relative group">
-              Noticias
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-atlantis-red transition-all duration-300 group-hover:w-full"></span>
-            </Link>
             <Link href="/competiciones" className="font-medium hover:text-atlantis-red transition-colors duration-300 relative group">
               Competiciones
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-atlantis-red transition-all duration-300 group-hover:w-full"></span>
@@ -152,9 +148,6 @@ export default function Navbar() {
             </Link>
             <Link href="/club" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">
               El Club
-            </Link>
-            <Link href="/#noticias" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">
-              Noticias
             </Link>
             <Link href="/competiciones" onClick={() => setIsOpen(false)} className="block py-2 text-lg font-medium hover:text-atlantis-red transition-colors duration-300 px-2 rounded-lg hover:bg-gray-50">
               Competiciones
