@@ -31,17 +31,17 @@ export default function AdminNoticiasPage() {
     const defaults = [
       {
         title: 'Inscripciones abiertas temporada 2025',
-        content: 'Ya puedes apuntar a tus hijas en nuestro programa de natación artística. Plazas limitadas para el grupo de iniciación.',
+        content: 'Ya puedes inscribir a tus peques en nuestro programa de natación artística. Plazas limitadas para el grupo de iniciación.',
         published: true,
       },
       {
         title: 'Resultados Campeonato Autonómico',
-        content: 'Nuestras nadadoras han conseguido excelentes resultados en el último campeonato autonómico de la Comunitat Valenciana.',
+        content: 'Nuestro equipo ha conseguido excelentes resultados en el último campeonato autonómico de la Comunitat Valenciana.',
         published: true,
       },
       {
         title: 'Exhibición de fin de temporada',
-        content: 'Os invitamos a la exhibición de fin de temporada donde nuestras nadadoras mostrarán todo lo aprendido.',
+        content: 'Os invitamos a la exhibición de fin de temporada donde el equipo mostrará todo lo aprendido.',
         published: true,
       },
     ];

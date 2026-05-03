@@ -128,7 +128,7 @@ export default function ClubPageContent({ teamMembers }: { teamMembers: TeamMemb
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed"
           >
-            Más de una década formando nadadoras con excelencia, valores y pasión por la natación artística.
+            Más de una década formando deportistas con excelencia, valores y pasión por la natación artística.
           </motion.p>
         </div>
 
@@ -370,14 +370,14 @@ export default function ClubPageContent({ teamMembers }: { teamMembers: TeamMemb
           >
             <div className="inline-flex items-center gap-2 text-atlantis-red text-sm font-semibold tracking-widest uppercase mb-4">
               <Users className="h-4 w-4" />
-              Entrenadoras
+              Cuerpo Técnico
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-atlantis-blue tracking-tight mb-4">
               Equipo Técnico
             </h2>
             <div className="w-16 h-1 bg-atlantis-red mx-auto rounded-full mb-6" />
             <p className="text-atlantis-gray text-lg max-w-2xl mx-auto leading-relaxed">
-              Nuestras entrenadoras están tituladas y cuentan con amplia experiencia en competiciones nacionales e internacionales.
+              Nuestro equipo técnico está titulado y cuenta con amplia experiencia en competiciones nacionales e internacionales.
             </p>
           </motion.div>
 

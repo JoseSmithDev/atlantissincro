@@ -18,7 +18,7 @@ export default async function NewsSection() {
     {
       id: '1',
       title: 'Inscripciones abiertas temporada 2025',
-      content: 'Ya puedes apuntar a tus hijas en nuestro programa de natación artística. Plazas limitadas para el grupo de iniciación.',
+      content: 'Ya puedes inscribir a tus peques en nuestro programa de natación artística. Plazas limitadas para el grupo de iniciación.',
       image_url: '/images/news/equipo.png',
       published: true,
       created_at: new Date().toISOString(),
@@ -26,7 +26,7 @@ export default async function NewsSection() {
     {
       id: '2',
       title: 'Resultados Campeonato Autonómico',
-      content: 'Nuestras nadadoras han conseguido excelentes resultados en el último campeonato autonómico de la Comunitat Valenciana.',
+      content: 'Nuestro equipo ha conseguido excelentes resultados en el último campeonato autonómico de la Comunitat Valenciana.',
       image_url: '/images/news/duo.png',
       published: true,
       created_at: new Date().toISOString(),
@@ -34,7 +34,7 @@ export default async function NewsSection() {
     {
       id: '3',
       title: 'Exhibición de fin de temporada',
-      content: 'Os invitamos a la exhibición de fin de temporada donde nuestras nadadoras mostrarán todo lo aprendido.',
+      content: 'Os invitamos a la exhibición de fin de temporada donde el equipo mostrará todo lo aprendido.',
       image_url: '/images/news/entrenamiento.png',
       published: true,
       created_at: new Date().toISOString(),

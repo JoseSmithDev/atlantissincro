@@ -46,7 +46,7 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
 
 const stats = [
   { value: 10, suffix: '+', label: 'Años de experiencia' },
-  { value: 70, suffix: '', label: 'Nadadoras activas' },
+  { value: 70, suffix: '', label: 'Deportistas activos' },
   { value: 3, suffix: '', label: 'Sedes en Valencia' },
   { value: 12, suffix: '+', label: 'Competiciones al año' },
 ];
@@ -76,7 +76,7 @@ export default function AboutSection() {
           </h2>
           <div className="w-16 h-1 bg-atlantis-red mx-auto rounded-full mb-6" />
           <p className="text-atlantis-gray text-lg max-w-2xl mx-auto leading-relaxed">
-            Somos un club dedicado a la natación artística en Valencia, formando nadadoras con pasión y excelencia.
+            Somos un club dedicado a la natación artística en Valencia, formando deportistas con pasión y excelencia.
           </p>
         </motion.div>
 

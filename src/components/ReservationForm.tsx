@@ -203,14 +203,14 @@ export default function ReservationForm() {
               </div>
               <div>
                 <label className="block text-sm font-semibold text-atlantis-blue mb-1">
-                  Nombre de la niña
+                  Nombre del peque
                 </label>
                 <input
                   type="text"
                   value={childName}
                   onChange={(e) => setChildName(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-atlantis-red focus:border-transparent outline-none transition-all"
-                  placeholder="Nombre de la niña"
+                  placeholder="Nombre del peque"
                   required
                 />
               </div>
@@ -245,7 +245,7 @@ export default function ReservationForm() {
               </div>
               <div>
                 <label className="block text-sm font-semibold text-atlantis-blue mb-1">
-                  Edad de la niña
+                  Edad del peque
                 </label>
                 <input
                   type="number"

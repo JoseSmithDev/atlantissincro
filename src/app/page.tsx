@@ -2,8 +2,10 @@ import Hero from '@/components/Hero';
 import SwimmerIntro from '@/components/SwimmerIntro';
 import TeamPhotoSection from '@/components/TeamPhotoSection';
 import AboutSection from '@/components/AboutSection';
-import CompetitionsSection from '@/components/CompetitionsSection';
+import PalmaresSection from '@/components/PalmaresSection';
 import NewsSection from '@/components/NewsSection';
+import SponsorsSection from '@/components/SponsorsSection';
+
 export default function HomePage() {
   return (
     <>
@@ -11,8 +13,9 @@ export default function HomePage() {
       <Hero />
       <TeamPhotoSection />
       <AboutSection />
-      <CompetitionsSection />
+      <PalmaresSection />
       <NewsSection />
+      <SponsorsSection />
     </>
   );
 }
